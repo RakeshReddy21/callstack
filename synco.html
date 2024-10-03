@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sync{
+            border: 2px solid black;
+            width: 40vw;
+            height: 40vh;
+        }
+        #skip{
+            margin-left:50%;
+            /* margin: 20px; */
+            border: 2px solid black;
+            height: 10%;
+            width: 45%;
+            text-align: center;
+        }
+        #video{
+            /* margin-top: -25%; */
+            height: 120%;
+            width: 100%;
+            display: none;
+        }
+        #sync ~ #raina{
+            position: absolute;
+            height: 120%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <a href="./callstack.txt"><h2>Doc on callstack</h2></a>
+    <div id="sync">
+        <img id="raina" src="./raina.jpg">
+        <video  id="video" src="./videoplayback.mp4" controls muted autoplay></video>
+        </video>
+        <p id="skip"></p>
+        
+    </div>
+    <script>
+        let skip=document.getElementById("skip")
+        let sync=document.getElementById("sync")
+        let video=document.getElementById("video")
+        let raina=document.getElementById("raina")
+
+        setTimeout(()=>{
+            skip.textContent="Skip"
+            skip.style.color="blue"
+            skip.addEventListener("click",()=>{
+                // video.setAttribute("src","./videoplayback.mp4")
+                video.style.display="block"
+                skip.style.display="none"
+                raina.style.display="none"
+            })
+        },6000)
+
+        timerLeft=5;
+        let timerid = setInterval(countdown, 1000);
+        function countdown(){
+            if(timerLeft==-1){
+                // sync.style.backgroundImage="url(./raina.jpg)"
+                clearInterval(timerLeft);
+            }else{
+                skip.innerHTML= timerLeft +" " + "skip in"
+                timerLeft--;
+            }   
+        }
+
+    </script>
+</body>
+</html>
